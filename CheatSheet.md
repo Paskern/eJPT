@@ -1,6 +1,6 @@
 # Cheat Sheet - eJPT
 
-This is a cheat sheet created as an exam preparartion for the eLearnSecurity's eJPT. 
+This is a cheat sheet created as an exam preparation for the eLearnSecurity's eJPT. 
 
 ## Enumeration
 
