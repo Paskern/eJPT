@@ -49,29 +49,29 @@ $ host vg.no
 ## Web Server Enumeration
 
 ### Banner Grabbing
-Using netcat:
+#### Netcat
 ```
 $ nc <IP ADDR> <PORT>
 ```
-Using openssl (for HTTPS)
+#### OpenSSL (for HTTPS)
 ```
 $ openssl s_client -connect <IP ADDR>:<PORT>
 ```
 
 ### Directory Enumeration
-Using dirb:
+#### Dirb
 ```
 $ dirb <IP ADDR>:<PORT>
 $ dirb <IP ADDR>:<PORT> -u <USERNAME>:<PASSWORD>
 $ dirb <IP ADDR>:<PORT> /usr/share/wordlists/dirb/common.txt
 ```
 
-Dirbuster has a GUI and is faster than dirb. Use the wordlist:
+#### DirBuster - GUI - Wordlist
 ```
 /usr/share/wordlists/dirb/common.txt
 ```
 
-Using gobuster:
+#### GoBuster
 ```
 $ gobuster dir -u http://<IP ADDR>:<PORT>/ -t 30 -w /usr/share/wordlists/dirb/common.txt -x .php,.html
 ```
