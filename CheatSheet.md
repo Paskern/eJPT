@@ -2,6 +2,15 @@
 
 This is a cheat sheet created as an exam preparation for the eLearnSecurity's eJPT. 
 
+## Table of Contents
+
+- [Initial Enumeration](#initial-enumeration)
+- [Networking](#networking)
+- [Web Server Enumeration](#web-server-enumeration)
+- [Exploits](#exploits)
+- [Cracking and Bruteforcing](#cracking-and-bruteforcing)
+- [Other](#other)
+
 ## Initial Enumeration
 Performing host discovery using fping and port scan using nmap. 
 ```
